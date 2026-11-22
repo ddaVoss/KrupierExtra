@@ -119,7 +119,7 @@
       if (b.insur) P.push(win('insur', b.insur, 1, 'Krupier bez gry → ubezpieczenie płaci 1:1'));
     } else if (outcome === 'player') {
       if (bought) P.push(push('ante', b.ante, 'Gracz dokupił otwarcie za ante → płacimy tylko bet'));
-      else if (G.id === 'royal' && R.player.length === 6 && !S.antePay6) P.push(push('ante', b.ante, 'Gracz dokupił kartę → ante tylko wraca'));
+      else if (G.id === 'royal') P.push(push('ante', b.ante, 'Krupier ma otwarcie → ante nie płacimy (wraca do gracza)'));
       else P.push(win('ante', b.ante, 1, 'Gracz wygrywa → ante płaci 1:1'));
       if (G.id === 'royal') P.push(win('bet', b.bet, rc.total, `Gracz: ${PE.comboText(rc)}`));
       else { const o = PAY.lvp.bet[pk] || 1; P.push(win('bet', b.bet, o, `Gracz: ${PE.LABEL[pk]} → ${fmtOdds(o)}`)); }
@@ -566,7 +566,7 @@
       'Krupier gra od <b>asa i króla</b> (AK). As i król to też układ gracza (1:1).',
       'Krupier bez gry: ante 1:1, bet wraca, ubezpieczenie 1:1.',
       'Gracz może <b>dokupić otwarcie</b> — płaci za to ante, a krupier wymienia najwyższą kartę. Dalej bez otwarcia: nic nie płacimy. Z otwarciem: płacimy tylko bet.',
-      'Gracz wygrywa: ante 1:1, bet według tabeli. <b>Dwa układy</b> (np. przy 6 kartach) — płacimy oba, jeśli każdy ma kartę, której nie ma drugi.',
+      'Krupier ma otwarcie i gracz wygrywa: <b>ante nie płacimy</b> (wraca), bet według tabeli. <b>Dwa układy</b> (np. przy 6 kartach) — płacimy oba, jeśli każdy ma kartę, której nie ma drugi.',
       'Ubezpieczenie: od ante do ante × wypłata układu; płaci 1:1 tylko gdy krupier nie ma gry.',
       'Bonus: 2,50 / 5 / 10 zł, najwyżej 1/10 ante (ante 25 → 2,50; ante 100 → do 10). Liczony z pierwszych 5 kart gracza.',
     ],
@@ -604,7 +604,6 @@
       { type: 'range', keys: ['min', 'max'], label: 'Ante (min / maks)', unit: 'zł', step: 5, min: 5, max: 100000 },
       { type: 'toggle', key: 'sixCards', label: 'Gracz czasem ma 6 kart', hint: 'Dokupiona karta — okazja na dwa układy' },
       { type: 'toggle', key: 'twoCombos5', label: 'Dwa układy także przy 5 kartach', hint: 'Np. para + as i król płaci 1 + 1 = 2:1' },
-      { type: 'toggle', key: 'antePay6', label: 'Ante płaci 1:1 po dokupieniu karty', hint: 'Wyłącz, jeśli u Was po dokupieniu ante tylko wraca' },
     ],
     lvp: [{ type: 'range', keys: ['min', 'max'], label: 'Ante (min / maks)', unit: 'zł', step: 5, min: 5, max: 100000 }],
     holdem: [

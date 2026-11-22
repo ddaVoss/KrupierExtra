@@ -97,7 +97,7 @@
     payMode: 'spots',
     ruletka: { mode: 'numbers', minChips: 1, maxChips: 5, values: [5, 10, 25], seriesMin: 50, seriesMax: 2000, series: ['voisins', 'tiers', 'orphelins', 'zero', 'neighbours'], losers: false },
     blackjack: { mode: 'payouts', min: 25, max: 300, boxes: 3 },
-    royal: { min: 25, max: 300, sixCards: true, twoCombos5: true, antePay6: true },
+    royal: { min: 25, max: 300, sixCards: true, twoCombos5: true },
     lvp: { min: 25, max: 300 },
     holdem: { min: 25, max: 300, qualify: 'pair4' },
     holdemBonus: { min: 25, max: 300 },
