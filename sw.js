@@ -1,5 +1,5 @@
 /* Krupier Extra — praca offline (pamięć podręczna plików aplikacji) */
-const CACHE = 'krupier-extra-v13';
+const CACHE = 'krupier-extra-v14';
 const ASSETS = [
   './',
   './index.html',
